@@ -1,0 +1,45 @@
+version: '3.8'
+
+services:
+  postgres-db:
+    container_name: postgres-db
+    image: postgres:14.1-alpine
+    ports:
+      - 5432:5432
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: rootpassword
+    volumes:
+      # copy the sql script to create tables
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - local-network
+
+  keycloak:
+    container_name: keycloak
+    image: bitnami/keycloak:19.0.3
+    ports:
+      - 8080:8080
+    volumes:
+      - /path/to/standalone-ha.xml:/bitnami/keycloak/configuration/standalone-ha.xml:ro
+      - /path/to/init-scripts:/docker-entrypoint-initdb.d
+    environment:
+      KEYCLOAK_DATABASE_HOST: postgres-db
+      KEYCLOAK_DATABASE_NAME: keycloak
+      KEYCLOAK_DATABASE_USER: keycloak
+      KEYCLOAK_DATABASE_PASSWORD: keycloakpassword
+      KEYCLOAK_USER: keyAdmin
+      KEYCLOAK_PASSWORD: password
+      PROXY_ADDRESS_FORWARDING: "true"
+      KEYCLOAK_EXTRA_ARGS: "-Dkeycloak.profile.feature.upload_scripts=enabled
+                            -Dkeycloak.profile.feature.scripts=enabled
+                            -Dkeycloak.profile.feature.token_exchange=enabled
+                            -Dkeycloak.profile.feature.admin_fine_grained_authz=enabled"
+    depends_on:
+      - postgres-db
+    networks:
+      - local-network
+
+networks:
+  local-network:

@@ -1,0 +1,2 @@
+curl -X POST --location "http://localhost:8081/api/v1/users" -H "Content-Type: application/json" -d  "{ \"userName\": \"crazyJack\", \"firstName\": \"Jack\", \"lastName\": \"Harrison\", \"email\": \"jack.harrison@leeds.united\", \"dayOfBirth\": \"1996-11-20\" }"
+
