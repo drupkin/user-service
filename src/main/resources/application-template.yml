@@ -20,3 +20,20 @@ spring:
       hibernate:
         globally_quoted_identifiers: true
         globally_quoted_identifiers_skip_column_definitions: true
+
+#Kafka Producer
+kafka:
+  bootstrapAddress: ${KAFKA_BROKER_URL:localhost:9092)
+  topic:
+    UserCreatedMessage
+  serializer:
+    key: "org.apache.kafka.common.serialization.StringSerializer"
+    value: "io.confluent.kafka.serializers.KafkaAvroSerializer"
+  schema-registry:
+    url: ${SCHEMA_REGISTRY_URL:http://localhost:8081)
+  #Kafka Consumer
+  group-id:
+    user-created-consumer-group
+  deserializer:
+    key: "org.apache.kafka.common.serialization.StringDeserializer"
+    value: "io.confluent.kafka.serializers.KafkaAvroDeserializer"

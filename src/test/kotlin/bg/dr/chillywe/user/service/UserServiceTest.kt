@@ -2,20 +2,16 @@ package bg.dr.chillywe.user.service
 
 import bg.dr.chillywe.user.UserNotFoundException
 import bg.dr.chillywe.user.UserTestData
-import bg.dr.chillywe.user.db.model.User
 import bg.dr.chillywe.user.db.repository.UserRepository
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.matchers.shouldBe
-import io.kotest.matchers.throwable.shouldHaveMessage
 import io.mockk.clearAllMocks
 import io.mockk.every
 import io.mockk.mockk
 import io.mockk.verify
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import org.junit.jupiter.api.assertThrows
 import org.springframework.http.HttpStatus
-import java.time.LocalDate
 import java.util.Optional
 
 class UserServiceTest {

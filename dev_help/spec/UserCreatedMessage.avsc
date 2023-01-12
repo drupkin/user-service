@@ -5,7 +5,7 @@
   "fields": [
     {
       "name": "id",
-      "type": "string"
+      "type": "long"
     },
     {
       "name": "userName",
@@ -20,7 +20,11 @@
       "type": "string"
     },
     {
-      "name": "effectiveFromSettlementDate",
+      "name": "email",
+      "type": "string"
+    },
+    {
+      "name": "dayOfBirth",
       "type": {
         "type": "long",
         "logicalType": "timestamp-millis"

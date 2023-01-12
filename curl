@@ -1,2 +1,15 @@
-curl -X POST --location "http://localhost:8081/api/v1/users" -H "Content-Type: application/json" -d  "{ \"userName\": \"crazyJack\", \"firstName\": \"Jack\", \"lastName\": \"Harrison\", \"email\": \"jack.harrison@leeds.united\", \"dayOfBirth\": \"1996-11-20\" }"
+## Application
+    create application user --> curl -X POST --location "http://localhost:8081/api/v1/users" -H "Content-Type: application/json" -d  "{ \"userName\": \"crazyJack\", \"firstName\": \"Jack\", \"lastName\": \"Harrison\", \"email\": \"jack.harrison@leeds.united\", \"dayOfBirth\": \"1996-11-20\" }"
+
+
+
+
+## Keycloak
+    get token --> curl -X POST 'http://localhost:8080/realms/user-service-demo-realm/protocol/openid-connect/token' \
+               --header 'Content-Type: application/x-www-form-urlencoded' \
+               --data-urlencode 'grant_type=password' \
+               --data-urlencode 'client_id=user-service' \
+               --data-urlencode 'client_secret=zrJ3mORFJeUTMwu2BPmRgUFk6iEtRCiS' \
+               --data-urlencode 'username=userU' \
+               --data-urlencode 'password=123'
 

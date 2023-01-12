@@ -1,11 +1,11 @@
 package bg.dr.chillywe.user.db.model
 
+import jakarta.persistence.*
 import java.time.LocalDate
-import javax.persistence.*
 
 @Entity
 @Table(name = "user")
-class User(
+class UserEntity(
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long?,
     @Column(name = "user_name", unique = true, nullable = false)
