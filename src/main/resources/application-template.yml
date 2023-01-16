@@ -31,9 +31,3 @@ kafka:
     value: "io.confluent.kafka.serializers.KafkaAvroSerializer"
   schema-registry:
     url: ${SCHEMA_REGISTRY_URL:http://localhost:8081)
-  #Kafka Consumer
-  group-id:
-    user-created-consumer-group
-  deserializer:
-    key: "org.apache.kafka.common.serialization.StringDeserializer"
-    value: "io.confluent.kafka.serializers.KafkaAvroDeserializer"

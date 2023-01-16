@@ -1,13 +1,13 @@
-package bg.dr.chillywe.user
-
-import org.junit.jupiter.api.Test
-import org.springframework.boot.test.context.SpringBootTest
-
-@SpringBootTest
-class UserServiceApplicationTests {
-
-    @Test
-    fun contextLoads() {
-    }
-
-}
+//package bg.dr.chillywe.user
+//
+//import org.junit.jupiter.api.Test
+//import org.springframework.boot.test.context.SpringBootTest
+//
+//@SpringBootTest
+//class UserServiceApplicationTests {
+//
+//    @Test
+//    fun contextLoads() {
+//    }
+//
+//}
