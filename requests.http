@@ -1,0 +1,19 @@
+### GET 'create kafka message and send it"
+GET http://localhost:8081/api/v1/send-created-message
+Content-Type: application/json
+
+### POST "create user"
+
+POST http://localhost:8081/api/v1/users
+Content-Type: application/json
+
+{
+  "userName": "crazyJack",
+  "firstName": "Jack",
+  "lastName": "Harrison",
+  "email": "jack.harrison@leeds.united",
+  "dayOfBirth": "1996-11-20"
+}
+
+### GET "get all users"
+GET http://localhost:8081/api/v1/users
