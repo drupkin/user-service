@@ -1,5 +1,7 @@
 package bg.dr.chillywe.user.config
 
+import bg.dr.chillywe.kafka.producer.KafkaService
+import bg.dr.chillywe.kafka.producer.KafkaServiceImpl
 import io.confluent.kafka.serializers.KafkaAvroDeserializerConfig
 import org.apache.kafka.clients.producer.ProducerConfig
 import org.springframework.beans.factory.annotation.Value
@@ -30,4 +32,10 @@ class KafkaProducerConfig(
     fun kafkaTemplate(): KafkaTemplate<String, Any> {
         return KafkaTemplate(producerFactory())
     }
+
+    @Bean
+    fun kafkaService(): KafkaService {
+        return KafkaServiceImpl(kafkaTemplate())
+    }
+
 }

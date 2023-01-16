@@ -1,24 +1,22 @@
 package bg.dr.chillywe.user.messaging
 
 import bg.dr.avro.chillywe.UserCreatedMessage
-import bg.dr.chillywe.user.service.UserService
+import bg.dr.chillywe.kafka.producer.KafkaService
 import org.slf4j.LoggerFactory
 import org.springframework.beans.factory.annotation.Value
-import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.stereotype.Service
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 
-interface KafkaService {
+interface UserKafkaService {
     fun sendUserCreatedMessage()
 }
 
 @Service
-class KafkaServiceImpl(
+class UserKafkaServiceImpl(
     @Value("\${kafka.topic}") val topic: String,
-    private val kafkaTemplate: KafkaTemplate<String, Any>,
-    private val userService: UserService
-) : KafkaService {
+    private val kafkaService: KafkaService
+) : UserKafkaService {
     private val log = LoggerFactory.getLogger(javaClass)
 
     override fun sendUserCreatedMessage() {
@@ -39,7 +37,7 @@ class KafkaServiceImpl(
 //            .setHeader(KafkaHeaders.TOPIC, topic)
 //            .setHeader("X-Custom-Header", "Custom header here")
 //            .build()
-        kafkaTemplate.send(topic, jackHarrison)
+        kafkaService.sendMessage(topic, jackHarrison)
         log.info("Message sent with success")
     }
 

@@ -1,20 +1,20 @@
 package bg.dr.chillywe.user.web.controller
 
 import bg.dr.chillywe.user.db.model.UserEntity
-import bg.dr.chillywe.user.messaging.KafkaService
+import bg.dr.chillywe.user.messaging.UserKafkaService
 import bg.dr.chillywe.user.service.UserService
 import org.springframework.web.bind.annotation.*
 
 @RestController
 class UserController(
     private val userService: UserService,
-    private val kafkaService: KafkaService
+    private val userKafkaService: UserKafkaService
 ) {
 
     // TODO: for test produce kafka message
     @GetMapping("/send-created-message")
     fun testKafka() {
-        kafkaService.sendUserCreatedMessage()
+        userKafkaService.sendUserCreatedMessage()
     }
 
     @GetMapping("/users")
